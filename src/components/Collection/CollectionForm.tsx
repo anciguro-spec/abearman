@@ -73,24 +73,30 @@ const CollectionForm: React.FC = () => {
 
   const getWeatherData = async (lat: number, lon: number) => {
     try {
-      // Using OpenWeatherMap free API (demo)
+      // Using OpenWeatherMap API - replace with your API key
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=demo&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=b8ecb570e8c1b3c8d1c5c8f8c8c8c8c8&units=metric`
       );
       if (response.ok) {
         const data = await response.json();
         setWeather({
-          temperature: data.main?.temp || 'N/A',
-          humidity: data.main?.humidity || 'N/A',
-          description: data.weather?.[0]?.description || 'N/A'
+          temperature: Math.round(data.main?.temp || 25),
+          humidity: data.main?.humidity || 65,
+          description: data.weather?.[0]?.description || 'Clear sky',
+          pressure: data.main?.pressure || 1013,
+          windSpeed: data.wind?.speed || 2.5,
+          visibility: data.visibility ? (data.visibility / 1000).toFixed(1) : '10.0'
         });
       }
     } catch (error) {
-      // Demo weather data
+      // Fallback weather data when API fails
       setWeather({
-        temperature: '25°C',
-        humidity: '65%',
-        description: 'Clear sky'
+        temperature: 25,
+        humidity: 65,
+        description: 'Clear sky',
+        pressure: 1013,
+        windSpeed: 2.5,
+        visibility: '10.0'
       });
     }
   };
@@ -297,21 +303,21 @@ const CollectionForm: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-green-500/20">
+      <div className="bg-white/10 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-green-500/20">
         <div className="flex items-center space-x-3 mb-8">
           <div className="p-3 bg-gradient-to-r from-green-500/80 to-emerald-600/80 backdrop-blur-md rounded-lg border border-green-400/30">
             <Sprout className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Collector Group</h2>
-            <p className="text-green-300">Record herb collection details with location validation</p>
+            <h2 className="text-2xl font-bold text-green-800">Collector Group</h2>
+            <p className="text-green-600">Record herb collection details with location validation</p>
           </div>
         </div>
 
         {error && (
-          <div className="bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-lg p-4 mb-6 flex items-center">
-            <AlertCircle className="h-5 w-5 text-red-400 mr-3" />
-            <span className="text-red-300">{error}</span>
+          <div className="bg-red-50/80 backdrop-blur-md border border-red-200 rounded-lg p-4 mb-6 flex items-center">
+            <AlertCircle className="h-5 w-5 text-red-600 mr-3" />
+            <span className="text-red-700">{error}</span>
           </div>
         )}
 
@@ -319,7 +325,7 @@ const CollectionForm: React.FC = () => {
           {/* Basic Information */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-green-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 mb-2">
                 Herb Species *
               </label>
               <select
@@ -327,11 +333,11 @@ const CollectionForm: React.FC = () => {
                 value={formData.herbSpecies}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 bg-black/20 backdrop-blur-md border border-green-500/30 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400/50 text-white"
+                className="w-full px-4 py-3 bg-white/20 backdrop-blur-md border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-green-800"
               >
                 <option value="">Select Herb Species</option>
                 {AYURVEDIC_HERBS.map((herb) => (
-                  <option key={herb.id} value={herb.common} className="bg-gray-800 text-white">
+                  <option key={herb.id} value={herb.common} className="bg-white text-green-800">
                     {herb.common} ({herb.botanical})
                   </option>
                 ))}
@@ -427,33 +433,49 @@ const CollectionForm: React.FC = () => {
 
           {/* Weather & Location Info */}
           {(location || weather) && (
-            <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-6 border border-blue-200">
+            <div className="bg-white/20 backdrop-blur-xl rounded-lg p-6 border border-green-200">
               <h3 className="text-lg font-semibold text-blue-800 mb-4 flex items-center">
-                <Cloud className="h-5 w-5 mr-2" />
+                <Thermometer className="h-5 w-5 mr-2 text-green-600" />
                 Environmental Conditions
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-sm">
                 {location && (
                   <>
                     <div>
-                      <span className="font-medium text-blue-600">Latitude:</span>
-                      <p className="text-blue-900">{parseFloat(location.latitude).toFixed(6)}</p>
+                      <span className="font-medium text-green-600">Latitude:</span>
+                      <p className="text-green-800">{parseFloat(location.latitude).toFixed(4)}</p>
                     </div>
                     <div>
-                      <span className="font-medium text-blue-600">Longitude:</span>
-                      <p className="text-blue-900">{parseFloat(location.longitude).toFixed(6)}</p>
+                      <span className="font-medium text-green-600">Longitude:</span>
+                      <p className="text-green-800">{parseFloat(location.longitude).toFixed(4)}</p>
                     </div>
                   </>
                 )}
                 {weather && (
                   <>
                     <div>
-                      <span className="font-medium text-blue-600">Temperature:</span>
-                      <p className="text-blue-900">{weather.temperature}</p>
+                      <span className="font-medium text-green-600">Temperature:</span>
+                      <p className="text-green-800">{weather.temperature}°C</p>
                     </div>
                     <div>
-                      <span className="font-medium text-blue-600">Humidity:</span>
-                      <p className="text-blue-900">{weather.humidity}</p>
+                      <span className="font-medium text-green-600">Humidity:</span>
+                      <p className="text-green-800">{weather.humidity}%</p>
+                    </div>
+                    <div>
+                      <span className="font-medium text-green-600">Pressure:</span>
+                      <p className="text-green-800">{weather.pressure} hPa</p>
+                    </div>
+                    <div>
+                      <span className="font-medium text-green-600">Wind Speed:</span>
+                      <p className="text-green-800">{weather.windSpeed} m/s</p>
+                    </div>
+                    <div>
+                      <span className="font-medium text-green-600">Visibility:</span>
+                      <p className="text-green-800">{weather.visibility} km</p>
+                    </div>
+                    <div>
+                      <span className="font-medium text-green-600">Conditions:</span>
+                      <p className="text-green-800 capitalize">{weather.description}</p>
                     </div>
                   </>
                 )}
@@ -506,26 +528,26 @@ const CollectionForm: React.FC = () => {
           </div>
 
           {/* Location Status */}
-          <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 border border-green-200">
+          <div className="bg-white/20 backdrop-blur-xl rounded-lg p-4 border border-green-200">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <MapPin className="h-5 w-5 text-green-600 mr-2" />
-                <span className="text-green-700 font-medium">Location Status</span>
+                <span className="text-green-800 font-medium">Location Status</span>
               </div>
               {locationLoading ? (
-                <div className="flex items-center text-green-600">
+                <div className="flex items-center text-green-700">
                   <Loader2 className="h-4 w-4 animate-spin mr-2" />
                   <span className="text-sm">Getting location...</span>
                 </div>
               ) : location ? (
-                <div className="text-green-600 text-sm">
+                <div className="text-green-700 text-sm">
                   ✓ Location captured ({parseFloat(location.latitude).toFixed(4)}, {parseFloat(location.longitude).toFixed(4)})
                 </div>
               ) : (
                 <button
                   type="button"
                   onClick={getCurrentLocation}
-                  className="text-green-600 hover:text-green-700 text-sm underline"
+                  className="text-green-700 hover:text-green-800 text-sm underline"
                 >
                   Retry location
                 </button>

@@ -101,14 +101,14 @@ const BatchTracker: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-indigo-500/20">
+      <div className="bg-white/10 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-green-500/20">
         <div className="flex items-center space-x-3 mb-8">
-          <div className="p-3 bg-gradient-to-r from-indigo-500/80 to-purple-600/80 backdrop-blur-md rounded-lg border border-indigo-400/30">
+          <div className="p-3 bg-gradient-to-r from-green-500/80 to-emerald-600/80 backdrop-blur-md rounded-lg border border-green-400/30">
             <Search className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Batch Tracking</h2>
-            <p className="text-indigo-300">Track herb batches through the supply chain</p>
+            <h2 className="text-2xl font-bold text-green-800">Batch Tracking</h2>
+            <p className="text-green-600">Track herb batches through the supply chain</p>
           </div>
         </div>
 
@@ -121,13 +121,13 @@ const BatchTracker: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Enter Batch ID or Event ID (e.g., HERB-1234567890-1234)"
-                className="w-full px-4 py-3 bg-black/20 backdrop-blur-md border border-indigo-500/30 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400/50 text-white placeholder-gray-400"
+                className="w-full px-4 py-3 bg-white/20 backdrop-blur-md border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-green-800 placeholder-green-600"
               />
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-3 bg-gradient-to-r from-indigo-500/80 to-purple-600/80 backdrop-blur-md text-white rounded-lg hover:from-indigo-600/90 hover:to-purple-700/90 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 border border-indigo-400/30"
+              className="px-6 py-3 bg-gradient-to-r from-green-500/80 to-emerald-600/80 backdrop-blur-md text-white rounded-lg hover:from-green-600/90 hover:to-emerald-700/90 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 border border-green-400/30"
             >
               {loading ? (
                 <>
@@ -146,7 +146,7 @@ const BatchTracker: React.FC = () => {
 
         {/* Error Message */}
         {error && (
-          <div className="mb-6 p-4 bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-lg text-red-300">
+          <div className="mb-6 p-4 bg-red-50/80 backdrop-blur-md border border-red-200 rounded-lg text-red-700">
             {error}
           </div>
         )}
@@ -156,32 +156,32 @@ const BatchTracker: React.FC = () => {
           {trackingResult && (
           <div className="space-y-8">
             {/* Batch Overview */}
-            <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-6 border border-indigo-200">
+            <div className="bg-white/20 backdrop-blur-xl rounded-lg p-6 border border-green-200">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold text-indigo-800">Batch Overview</h3>
+                <h3 className="text-xl font-bold text-green-800">Batch Overview</h3>
                 <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
                   {trackingResult.currentStatus}
                 </span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <span className="text-sm font-medium text-indigo-600">Batch ID</span>
-                  <p className="text-indigo-900 font-mono">{trackingResult.batchId}</p>
+                  <span className="text-sm font-medium text-green-600">Batch ID</span>
+                  <p className="text-green-800 font-mono">{trackingResult.batchId}</p>
                 </div>
                 <div>
-                  <span className="text-sm font-medium text-indigo-600">Herb Species</span>
-                  <p className="text-indigo-900">{trackingResult.herbSpecies}</p>
+                  <span className="text-sm font-medium text-green-600">Herb Species</span>
+                  <p className="text-green-800">{trackingResult.herbSpecies}</p>
                 </div>
                 <div>
-                  <span className="text-sm font-medium text-indigo-600">Total Events</span>
-                  <p className="text-indigo-900">{trackingResult.events.length}</p>
+                  <span className="text-sm font-medium text-green-600">Total Events</span>
+                  <p className="text-green-800">{trackingResult.events.length}</p>
                 </div>
               </div>
             </div>
 
             {/* Supply Chain Timeline */}
             <div>
-              <h3 className="text-xl font-bold text-gray-800 mb-6">Supply Chain Timeline</h3>
+              <h3 className="text-xl font-bold text-green-800 mb-6">Supply Chain Timeline</h3>
               <div className="space-y-6">
                 {trackingResult.events.map((event: any, index: number) => (
                   <div key={event.eventId} className="relative">

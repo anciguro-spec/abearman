@@ -272,28 +272,28 @@ const ManufacturingForm: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-orange-500/20">
+      <div className="bg-white/10 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-green-500/20">
         <div className="flex items-center space-x-3 mb-8">
-          <div className="p-3 bg-gradient-to-r from-orange-500/80 to-red-600/80 backdrop-blur-md rounded-lg border border-orange-400/30">
+          <div className="p-3 bg-gradient-to-r from-green-500/80 to-emerald-600/80 backdrop-blur-md rounded-lg border border-green-400/30">
             <Package className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Manufacturing Plant</h2>
-            <p className="text-orange-300">Record final product manufacturing with certifications</p>
+            <h2 className="text-2xl font-bold text-green-800">Manufacturing Plant</h2>
+            <p className="text-green-600">Record final product manufacturing with certifications</p>
           </div>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-lg flex items-center space-x-2">
-            <AlertCircle className="h-5 w-5 text-red-400" />
-            <p className="text-red-300">{error}</p>
+          <div className="mb-6 p-4 bg-red-50/80 backdrop-blur-md border border-red-200 rounded-lg flex items-center space-x-2">
+            <AlertCircle className="h-5 w-5 text-red-600" />
+            <p className="text-red-700">{error}</p>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-orange-700 mb-2">
+              <label className="block text-sm font-medium text-green-700 mb-2">
                 Scan QR Code (optional - auto-fills batch and parent event)
               </label>
               <div className="flex space-x-2">
@@ -303,11 +303,11 @@ const ManufacturingForm: React.FC = () => {
                   value={formData.qrCode}
                   onChange={handleInputChange}
                   placeholder="Scan or paste QR code data"
-                  className="flex-1 px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="flex-1 px-4 py-3 bg-white/20 backdrop-blur-md border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-green-800 placeholder-green-600"
                 />
                 <button
                   type="button"
-                  className="px-4 py-3 bg-orange-100 text-orange-700 rounded-lg hover:bg-orange-200 transition-colors"
+                  className="px-4 py-3 bg-green-100/80 text-green-700 rounded-lg hover:bg-green-200/80 transition-colors"
                 >
                   <QrCode className="h-5 w-5" />
                 </button>
@@ -536,7 +536,7 @@ const ManufacturingForm: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-4 px-6 rounded-lg hover:from-orange-600 hover:to-red-700 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+           className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-4 px-6 rounded-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
           >
             {loading ? (
               <>

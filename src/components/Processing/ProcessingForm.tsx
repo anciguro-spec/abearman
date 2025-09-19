@@ -287,28 +287,28 @@ const ProcessingForm: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-purple-500/20">
+      <div className="bg-white/10 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-green-500/20">
         <div className="flex items-center space-x-3 mb-8">
-          <div className="p-3 bg-gradient-to-r from-purple-500/80 to-indigo-600/80 backdrop-blur-md rounded-lg border border-purple-400/30">
+          <div className="p-3 bg-gradient-to-r from-green-500/80 to-emerald-600/80 backdrop-blur-md rounded-lg border border-green-400/30">
             <Cpu className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Processing Unit</h2>
-            <p className="text-purple-300">Record processing operations with location and timestamps</p>
+            <h2 className="text-2xl font-bold text-green-800">Processing Unit</h2>
+            <p className="text-green-600">Record processing operations with location and timestamps</p>
           </div>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-lg flex items-center space-x-2">
-            <AlertCircle className="h-5 w-5 text-red-400" />
-            <p className="text-red-300">{error}</p>
+          <div className="mb-6 p-4 bg-red-50/80 backdrop-blur-md border border-red-200 rounded-lg flex items-center space-x-2">
+            <AlertCircle className="h-5 w-5 text-red-600" />
+            <p className="text-red-700">{error}</p>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-purple-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 mb-2">
                 Scan QR Code (optional - auto-fills batch and parent event)
               </label>
               <div className="flex space-x-2">
@@ -318,11 +318,11 @@ const ProcessingForm: React.FC = () => {
                   value={formData.qrCode}
                   onChange={handleInputChange}
                   placeholder="Scan or paste QR code data"
-                  className="flex-1 px-4 py-3 bg-black/20 backdrop-blur-md border border-purple-500/30 rounded-lg focus:ring-2 focus:ring-purple-400 focus:border-purple-400/50 text-white placeholder-gray-400"
+                  className="flex-1 px-4 py-3 bg-white/20 backdrop-blur-md border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-green-800 placeholder-green-600"
                 />
                 <button
                   type="button"
-                  className="px-4 py-3 bg-purple-500/20 backdrop-blur-md text-purple-300 rounded-lg hover:bg-purple-500/30 transition-colors border border-purple-500/30"
+                  className="px-4 py-3 bg-green-100/80 backdrop-blur-md text-green-700 rounded-lg hover:bg-green-200/80 transition-colors border border-green-300"
                 >
                   <QrCode className="h-5 w-5" />
                 </button>
@@ -509,23 +509,23 @@ const ProcessingForm: React.FC = () => {
 
           {/* Location Info */}
           {location && (
-            <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-4 border border-purple-200">
-              <h3 className="text-sm font-semibold text-purple-800 mb-2 flex items-center">
+            <div className="bg-white/20 backdrop-blur-xl rounded-lg p-4 border border-green-200">
+              <h3 className="text-sm font-semibold text-green-800 mb-2 flex items-center">
                 <MapPin className="h-4 w-4 mr-2" />
                 Processing Location & Timestamp
               </h3>
               <div className="grid grid-cols-3 gap-4 text-xs">
                 <div>
-                  <span className="font-medium text-purple-600">Latitude:</span>
-                  <p className="text-purple-900">{parseFloat(location.latitude).toFixed(6)}</p>
+                  <span className="font-medium text-green-600">Latitude:</span>
+                  <p className="text-green-800">{parseFloat(location.latitude).toFixed(6)}</p>
                 </div>
                 <div>
-                  <span className="font-medium text-purple-600">Longitude:</span>
-                  <p className="text-purple-900">{parseFloat(location.longitude).toFixed(6)}</p>
+                  <span className="font-medium text-green-600">Longitude:</span>
+                  <p className="text-green-800">{parseFloat(location.longitude).toFixed(6)}</p>
                 </div>
                 <div>
-                  <span className="font-medium text-purple-600">Timestamp:</span>
-                  <p className="text-purple-900">{new Date(location.timestamp).toLocaleString()}</p>
+                  <span className="font-medium text-green-600">Timestamp:</span>
+                  <p className="text-green-800">{new Date(location.timestamp).toLocaleString()}</p>
                 </div>
               </div>
             </div>
@@ -581,7 +581,7 @@ const ProcessingForm: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-4 px-6 rounded-lg hover:from-purple-600 hover:to-indigo-700 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+            className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-4 px-6 rounded-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
           >
             {loading ? (
               <>

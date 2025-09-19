@@ -113,14 +113,14 @@ const AuditLog: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="bg-white rounded-xl shadow-lg p-8">
+      <div className="bg-white/10 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-green-500/20">
         <div className="flex items-center space-x-3 mb-8">
-          <div className="p-3 bg-gradient-to-r from-gray-500 to-gray-600 rounded-lg">
+          <div className="p-3 bg-gradient-to-r from-green-500/80 to-emerald-600/80 backdrop-blur-md rounded-lg border border-green-400/30">
             <FileText className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-800">Audit Log</h2>
-            <p className="text-gray-600">Blockchain transaction history and system audit trail</p>
+            <h2 className="text-2xl font-bold text-green-800">Audit Log</h2>
+            <p className="text-green-600">Blockchain transaction history and system audit trail</p>
           </div>
         </div>
 
@@ -128,12 +128,12 @@ const AuditLog: React.FC = () => {
         <div className="mb-6 flex items-center space-x-4">
           <div className="flex items-center space-x-2">
             <Filter className="h-5 w-5 text-gray-500" />
-            <span className="text-sm font-medium text-gray-700">Filter by Event Type:</span>
+            <span className="text-sm font-medium text-green-700">Filter by Event Type:</span>
           </div>
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent text-sm"
+            className="px-3 py-2 bg-white/20 backdrop-blur-md border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-green-800 text-sm"
           >
             <option value="all">All Events</option>
             <option value="collection">Collection</option>
@@ -146,7 +146,7 @@ const AuditLog: React.FC = () => {
         {/* Audit Entries */}
         <div className="space-y-4">
           {filteredEntries.map((entry) => (
-            <div key={entry.id} className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <div key={entry.id} className="bg-white/20 backdrop-blur-xl rounded-lg p-6 border border-green-200">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${getEventTypeColor(entry.eventType)}`}>
@@ -156,7 +156,7 @@ const AuditLog: React.FC = () => {
                     {entry.status.toUpperCase()}
                   </span>
                 </div>
-                <div className="flex items-center text-sm text-gray-500">
+                <div className="flex items-center text-sm text-green-600">
                   <Clock className="h-4 w-4 mr-1" />
                   {new Date(entry.timestamp).toLocaleString()}
                 </div>
@@ -164,42 +164,42 @@ const AuditLog: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                 <div>
-                  <span className="text-sm font-medium text-gray-600">Transaction ID</span>
-                  <p className="text-sm text-gray-900 font-mono break-all">{entry.transactionId}</p>
+                  <span className="text-sm font-medium text-green-600">Transaction ID</span>
+                  <p className="text-sm text-green-800 font-mono break-all">{entry.transactionId}</p>
                 </div>
                 <div>
-                  <span className="text-sm font-medium text-gray-600">Block Number</span>
-                  <p className="text-sm text-gray-900">{entry.blockNumber}</p>
+                  <span className="text-sm font-medium text-green-600">Block Number</span>
+                  <p className="text-sm text-green-800">{entry.blockNumber}</p>
                 </div>
                 <div>
-                  <span className="text-sm font-medium text-gray-600">Batch ID</span>
-                  <p className="text-sm text-gray-900 font-mono">{entry.batchId}</p>
+                  <span className="text-sm font-medium text-green-600">Batch ID</span>
+                  <p className="text-sm text-green-800 font-mono">{entry.batchId}</p>
                 </div>
                 <div>
-                  <span className="text-sm font-medium text-gray-600">Participant</span>
-                  <p className="text-sm text-gray-900">{entry.participant}</p>
+                  <span className="text-sm font-medium text-green-600">Participant</span>
+                  <p className="text-sm text-green-800">{entry.participant}</p>
                 </div>
               </div>
 
               {/* Fabric Network Details */}
-              <div className="bg-white rounded-lg p-4 border border-gray-200">
-                <h4 className="text-sm font-semibold text-gray-800 mb-3">Hyperledger Fabric Details</h4>
+              <div className="bg-white/30 backdrop-blur-md rounded-lg p-4 border border-green-200">
+                <h4 className="text-sm font-semibold text-green-800 mb-3">Hyperledger Fabric Details</h4>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                   <div>
-                    <span className="font-medium text-gray-600">Channel:</span>
-                    <p className="text-gray-900">{entry.fabricDetails.channelId}</p>
+                    <span className="font-medium text-green-600">Channel:</span>
+                    <p className="text-green-800">{entry.fabricDetails.channelId}</p>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-600">Chaincode:</span>
-                    <p className="text-gray-900">{entry.fabricDetails.chaincodeId}</p>
+                    <span className="font-medium text-green-600">Chaincode:</span>
+                    <p className="text-green-800">{entry.fabricDetails.chaincodeId}</p>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-600">MSP ID:</span>
-                    <p className="text-gray-900">{entry.fabricDetails.mspId}</p>
+                    <span className="font-medium text-green-600">MSP ID:</span>
+                    <p className="text-green-800">{entry.fabricDetails.mspId}</p>
                   </div>
                   <div>
-                    <span className="font-medium text-gray-600">Endorsing Peers:</span>
-                    <p className="text-gray-900">{entry.fabricDetails.endorsingPeers.join(', ')}</p>
+                    <span className="font-medium text-green-600">Endorsing Peers:</span>
+                    <p className="text-green-800">{entry.fabricDetails.endorsingPeers.join(', ')}</p>
                   </div>
                 </div>
                 

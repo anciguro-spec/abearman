@@ -50,15 +50,15 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({ qrData, title, subtitle }
   };
 
   return (
-    <div className="bg-black/10 backdrop-blur-xl rounded-xl p-8 border border-green-500/30">
+    <div className="bg-white/20 backdrop-blur-xl rounded-xl p-8 border border-green-300">
       <div className="text-center mb-6">
-        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-        <p className="text-green-300">{subtitle}</p>
+        <h3 className="text-xl font-bold text-green-800 mb-2">{title}</h3>
+        <p className="text-green-600">{subtitle}</p>
       </div>
 
       {/* QR Code */}
       <div className="flex justify-center mb-6">
-        <div className="bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-green-400/30">
+        <div className="bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-green-300">
           <img 
             src={qrData.dataURL} 
             alt={title}
@@ -68,7 +68,7 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({ qrData, title, subtitle }
       </div>
 
       {/* Tracking URL */}
-      <div className="bg-black/20 backdrop-blur-md rounded-lg p-4 mb-6 border border-green-500/30">
+      <div className="bg-white/30 backdrop-blur-md rounded-lg p-4 mb-6 border border-green-300">
         <label className="block text-sm font-medium text-green-700 mb-2">
           Tracking URL
         </label>
@@ -77,18 +77,18 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({ qrData, title, subtitle }
             type="text"
             value={qrData.trackingUrl}
             readOnly
-            className="flex-1 px-3 py-2 text-sm bg-black/20 backdrop-blur-md border border-green-500/30 rounded-lg font-mono text-white"
+            className="flex-1 px-3 py-2 text-sm bg-white/20 backdrop-blur-md border border-green-300 rounded-lg font-mono text-green-800"
           />
           <button
             onClick={handleCopyUrl}
-            className="px-3 py-2 bg-green-500/80 backdrop-blur-md text-white rounded-lg hover:bg-green-600/90 transition-colors border border-green-400/30"
+            className="px-3 py-2 bg-green-500/80 backdrop-blur-md text-white rounded-lg hover:bg-green-600/90 transition-colors border border-green-400"
             title="Copy URL"
           >
             {copied ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
           </button>
         </div>
         {copied && (
-          <p className="text-xs text-green-300 mt-1">URL copied to clipboard!</p>
+          <p className="text-xs text-green-600 mt-1">URL copied to clipboard!</p>
         )}
       </div>
 

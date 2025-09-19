@@ -92,14 +92,14 @@ const ConsumerView: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-emerald-500/20">
+      <div className="bg-white/10 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-green-500/20">
         <div className="flex items-center space-x-3 mb-8">
-          <div className="p-3 bg-gradient-to-r from-emerald-500/80 to-teal-600/80 backdrop-blur-md rounded-lg border border-emerald-400/30">
+          <div className="p-3 bg-gradient-to-r from-green-500/80 to-emerald-600/80 backdrop-blur-md rounded-lg border border-green-400/30">
             <Shield className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Product Verification</h2>
-            <p className="text-emerald-300">Verify authenticity and view complete product journey</p>
+            <h2 className="text-2xl font-bold text-green-800">Product Verification</h2>
+            <p className="text-green-600">Verify authenticity and view complete product journey</p>
           </div>
         </div>
 
@@ -112,13 +112,13 @@ const ConsumerView: React.FC = () => {
                 value={qrInput}
                 onChange={(e) => setQrInput(e.target.value)}
                 placeholder="Scan QR code or enter product code"
-                className="w-full px-4 py-3 bg-black/20 backdrop-blur-md border border-emerald-500/30 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400/50 text-white placeholder-gray-400"
+                className="w-full px-4 py-3 bg-white/20 backdrop-blur-md border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-green-800 placeholder-green-600"
               />
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-3 bg-gradient-to-r from-emerald-500/80 to-teal-600/80 backdrop-blur-md text-white rounded-lg hover:from-emerald-600/90 hover:to-teal-700/90 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 border border-emerald-400/30"
+              className="px-6 py-3 bg-gradient-to-r from-green-500/80 to-emerald-600/80 backdrop-blur-md text-white rounded-lg hover:from-green-600/90 hover:to-emerald-700/90 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 border border-green-400/30"
             >
               {loading ? (
                 <>

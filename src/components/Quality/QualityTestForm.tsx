@@ -281,28 +281,28 @@ const QualityTestForm: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-blue-500/20">
+      <div className="bg-white/10 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-green-500/20">
         <div className="flex items-center space-x-3 mb-8">
-          <div className="p-3 bg-gradient-to-r from-blue-500/80 to-indigo-600/80 backdrop-blur-md rounded-lg border border-blue-400/30">
+          <div className="p-3 bg-gradient-to-r from-green-500/80 to-emerald-600/80 backdrop-blur-md rounded-lg border border-green-400/30">
             <TestTube className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">Testing Labs</h2>
-            <p className="text-blue-300">Record quality test results with location and timestamp</p>
+            <h2 className="text-2xl font-bold text-green-800">Testing Labs</h2>
+            <p className="text-green-600">Record quality test results with location and timestamp</p>
           </div>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-lg flex items-center space-x-2">
-            <AlertCircle className="h-5 w-5 text-red-400" />
-            <p className="text-red-300">{error}</p>
+          <div className="mb-6 p-4 bg-red-50/80 backdrop-blur-md border border-red-200 rounded-lg flex items-center space-x-2">
+            <AlertCircle className="h-5 w-5 text-red-600" />
+            <p className="text-red-700">{error}</p>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-blue-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 mb-2">
                 Scan QR Code (optional - auto-fills batch and parent event)
               </label>
               <div className="flex space-x-2">
@@ -312,11 +312,11 @@ const QualityTestForm: React.FC = () => {
                   value={formData.qrCode}
                   onChange={handleInputChange}
                   placeholder="Scan or paste QR code data"
-                  className="flex-1 px-4 py-3 bg-black/20 backdrop-blur-md border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400/50 text-white placeholder-gray-400"
+                  className="flex-1 px-4 py-3 bg-white/20 backdrop-blur-md border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-green-800 placeholder-green-600"
                 />
                 <button
                   type="button"
-                  className="px-4 py-3 bg-blue-500/20 backdrop-blur-md text-blue-300 rounded-lg hover:bg-blue-500/30 transition-colors border border-blue-500/30"
+                  className="px-4 py-3 bg-green-100/80 backdrop-blur-md text-green-700 rounded-lg hover:bg-green-200/80 transition-colors border border-green-300"
                 >
                   <QrCode className="h-5 w-5" />
                 </button>
@@ -324,7 +324,7 @@ const QualityTestForm: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-blue-300 mb-2">
+              <label className="block text-sm font-medium text-green-700 mb-2">
                 Batch ID *
               </label>
               <input
@@ -334,7 +334,7 @@ const QualityTestForm: React.FC = () => {
                 onChange={handleInputChange}
                 required
                 placeholder="HERB-1234567890-1234"
-                className="w-full px-4 py-3 bg-black/20 backdrop-blur-md border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400/50 text-white placeholder-gray-400"
+                className="w-full px-4 py-3 bg-white/20 backdrop-blur-md border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-green-800 placeholder-green-600"
               />
             </div>
 
@@ -466,23 +466,23 @@ const QualityTestForm: React.FC = () => {
 
           {/* Location Info */}
           {location && (
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 border border-blue-200">
-              <h3 className="text-sm font-semibold text-blue-800 mb-2 flex items-center">
+            <div className="bg-white/20 backdrop-blur-xl rounded-lg p-4 border border-green-200">
+              <h3 className="text-sm font-semibold text-green-800 mb-2 flex items-center">
                 <MapPin className="h-4 w-4 mr-2" />
                 Test Location & Timestamp
               </h3>
               <div className="grid grid-cols-3 gap-4 text-xs">
                 <div>
-                  <span className="font-medium text-blue-600">Latitude:</span>
-                  <p className="text-blue-900">{parseFloat(location.latitude).toFixed(6)}</p>
+                  <span className="font-medium text-green-600">Latitude:</span>
+                  <p className="text-green-800">{parseFloat(location.latitude).toFixed(6)}</p>
                 </div>
                 <div>
-                  <span className="font-medium text-blue-600">Longitude:</span>
-                  <p className="text-blue-900">{parseFloat(location.longitude).toFixed(6)}</p>
+                  <span className="font-medium text-green-600">Longitude:</span>
+                  <p className="text-green-800">{parseFloat(location.longitude).toFixed(6)}</p>
                 </div>
                 <div>
-                  <span className="font-medium text-blue-600">Timestamp:</span>
-                  <p className="text-blue-900">{new Date(location.timestamp).toLocaleString()}</p>
+                  <span className="font-medium text-green-600">Timestamp:</span>
+                  <p className="text-green-800">{new Date(location.timestamp).toLocaleString()}</p>
                 </div>
               </div>
             </div>
@@ -491,13 +491,13 @@ const QualityTestForm: React.FC = () => {
           {/* Custom Parameters */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <label className="block text-sm font-medium text-blue-700">
+              <label className="block text-sm font-medium text-green-700">
                 Additional Test Parameters
               </label>
               <button
                 type="button"
                 onClick={addCustomParameter}
-                className="flex items-center space-x-1 px-3 py-1 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-sm"
+                className="flex items-center space-x-1 px-3 py-1 bg-green-100/80 text-green-700 rounded-lg hover:bg-green-200/80 transition-colors text-sm"
               >
                 <Plus className="h-4 w-4" />
                 <span>Add Parameter</span>
@@ -511,14 +511,14 @@ const QualityTestForm: React.FC = () => {
                   placeholder="Parameter name"
                   value={param.name}
                   onChange={(e) => updateCustomParameter(index, 'name', e.target.value)}
-                  className="flex-1 px-3 py-2 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                  className="flex-1 px-3 py-2 bg-white/20 backdrop-blur-md border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-green-800 text-sm"
                 />
                 <input
                   type="text"
                   placeholder="Value"
                   value={param.value}
                   onChange={(e) => updateCustomParameter(index, 'value', e.target.value)}
-                  className="flex-1 px-3 py-2 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                  className="flex-1 px-3 py-2 bg-white/20 backdrop-blur-md border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-green-800 text-sm"
                 />
                 <button
                   type="button"
@@ -533,14 +533,14 @@ const QualityTestForm: React.FC = () => {
 
           {/* Image Upload */}
           <div>
-            <label className="block text-sm font-medium text-blue-700 mb-2">
+            <label className="block text-sm font-medium text-green-700 mb-2">
               Upload Test Results Image (optional)
             </label>
-            <div className="border-2 border-dashed border-blue-200 rounded-lg p-6">
+            <div className="border-2 border-dashed border-green-300 rounded-lg p-6 bg-white/10 backdrop-blur-md">
               <div className="text-center">
-                <TestTube className="h-12 w-12 text-blue-400 mx-auto mb-4" />
-                <div className="flex text-sm text-blue-600">
-                  <label className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500">
+                <TestTube className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                <div className="flex text-sm text-green-700">
+                  <label className="relative cursor-pointer bg-white/80 rounded-md font-medium text-green-700 hover:text-green-800 px-2 py-1">
                     <span>Upload a file</span>
                     <input
                       type="file"
@@ -552,9 +552,9 @@ const QualityTestForm: React.FC = () => {
                   </label>
                   <p className="pl-1">or drag and drop</p>
                 </div>
-                <p className="text-xs text-blue-500">PNG, JPG, JPEG up to 10MB</p>
+                <p className="text-xs text-green-600">PNG, JPG, JPEG up to 10MB</p>
                 {formData.image && (
-                  <p className="mt-2 text-sm font-medium text-blue-700">
+                  <p className="mt-2 text-sm font-medium text-green-700">
                     Selected: {formData.image.name}
                   </p>
                 )}
@@ -564,7 +564,7 @@ const QualityTestForm: React.FC = () => {
 
           {/* Notes */}
           <div>
-            <label className="block text-sm font-medium text-blue-700 mb-2">
+            <label className="block text-sm font-medium text-green-700 mb-2">
               Test Notes (optional)
             </label>
             <textarea
@@ -573,7 +573,7 @@ const QualityTestForm: React.FC = () => {
               onChange={handleInputChange}
               rows={3}
               placeholder="Add any additional notes about this quality test..."
-              className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 bg-white/20 backdrop-blur-md border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-green-800 placeholder-green-600"
             />
           </div>
 
@@ -581,7 +581,7 @@ const QualityTestForm: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-4 px-6 rounded-lg hover:from-blue-600 hover:to-indigo-700 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+            className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-4 px-6 rounded-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
           >
             {loading ? (
               <>
