@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AuthProvider, useAuth } from './hooks/useAuth';
 import LandingPage from './components/Landing/LandingPage';
 import LoginForm from './components/Auth/LoginForm';
