@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import React, { useState, useEffect } from 'react';
 import { Cpu, Upload, AlertCircle, CheckCircle, Loader2, QrCode, MapPin, Calculator } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
