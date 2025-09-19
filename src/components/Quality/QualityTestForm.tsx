@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TestTube, Upload, AlertCircle, CheckCircle, Loader2, QrCode, MapPin, Plus, X } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import blockchainService from '../../services/blockchainService';
@@ -216,37 +217,37 @@ const QualityTestForm: React.FC = () => {
   if (success && qrResult) {
     return (
       <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-blue-500/20">
           <div className="text-center mb-6">
             <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-green-800 mb-2">Quality Test Completed!</h2>
-            <p className="text-green-600">Test results have been recorded on the blockchain</p>
+            <h2 className="text-2xl font-bold text-white mb-2">Quality Test Completed!</h2>
+            <p className="text-green-300">Test results have been recorded on the blockchain</p>
           </div>
 
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 mb-6">
+          <div className="bg-blue-500/10 backdrop-blur-md rounded-lg p-6 mb-6 border border-blue-500/30">
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="font-medium text-blue-700">Batch ID:</span>
-                <p className="text-blue-900 font-mono">{qrResult.batchId}</p>
+                <span className="font-medium text-blue-300">Batch ID:</span>
+                <p className="text-white font-mono">{qrResult.batchId}</p>
               </div>
               <div>
-                <span className="font-medium text-blue-700">Test Event ID:</span>
-                <p className="text-blue-900 font-mono">{qrResult.eventId}</p>
+                <span className="font-medium text-blue-300">Test Event ID:</span>
+                <p className="text-white font-mono">{qrResult.eventId}</p>
               </div>
               <div>
-                <span className="font-medium text-blue-700">Moisture Content:</span>
-                <p className="text-blue-900">{qrResult.testResults.moistureContent}%</p>
+                <span className="font-medium text-blue-300">Moisture Content:</span>
+                <p className="text-white">{qrResult.testResults.moistureContent}%</p>
               </div>
               <div>
-                <span className="font-medium text-blue-700">Purity:</span>
-                <p className="text-blue-900">{qrResult.testResults.purity}%</p>
+                <span className="font-medium text-blue-300">Purity:</span>
+                <p className="text-white">{qrResult.testResults.purity}%</p>
               </div>
               <div>
-                <span className="font-medium text-blue-700">Pesticide Level:</span>
-                <p className="text-blue-900">{qrResult.testResults.pesticideLevel} ppm</p>
+                <span className="font-medium text-blue-300">Pesticide Level:</span>
+                <p className="text-white">{qrResult.testResults.pesticideLevel} ppm</p>
               </div>
               <div>
-                <span className="font-medium text-blue-700">Status:</span>
+                <span className="font-medium text-blue-300">Status:</span>
                 <p className={`font-bold ${
                   qrResult.testResults.purity >= 95 && qrResult.testResults.pesticideLevel <= 0.01 
                     ? 'text-green-600' : 'text-orange-600'
@@ -270,7 +271,7 @@ const QualityTestForm: React.FC = () => {
 
           <button
             onClick={handleReset}
-            className="w-full mt-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 px-4 rounded-lg hover:from-blue-600 hover:to-indigo-700 transition-all duration-200 font-medium"
+            className="w-full mt-6 bg-gradient-to-r from-blue-500/80 to-indigo-600/80 backdrop-blur-md text-white py-3 px-4 rounded-lg hover:from-blue-600/90 hover:to-indigo-700/90 transition-all duration-200 font-medium border border-blue-400/30"
           >
             Perform New Test
           </button>
@@ -281,28 +282,28 @@ const QualityTestForm: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-white rounded-xl shadow-lg p-8">
+      <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-blue-500/20">
         <div className="flex items-center space-x-3 mb-8">
-          <div className="p-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg">
+          <div className="p-3 bg-gradient-to-r from-blue-500/80 to-indigo-600/80 backdrop-blur-md rounded-lg border border-blue-400/30">
             <TestTube className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-blue-800">Testing Labs</h2>
-            <p className="text-blue-600">Record quality test results with location and timestamp</p>
+            <h2 className="text-2xl font-bold text-white">Testing Labs</h2>
+            <p className="text-blue-300">Record quality test results with location and timestamp</p>
           </div>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-2">
-            <AlertCircle className="h-5 w-5 text-red-600" />
-            <p className="text-red-700">{error}</p>
+          <div className="mb-6 p-4 bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-lg flex items-center space-x-2">
+            <AlertCircle className="h-5 w-5 text-red-400" />
+            <p className="text-red-300">{error}</p>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-blue-700 mb-2">
+              <label className="block text-sm font-medium text-blue-300 mb-2">
                 Scan QR Code (optional - auto-fills batch and parent event)
               </label>
               <div className="flex space-x-2">
@@ -312,11 +313,11 @@ const QualityTestForm: React.FC = () => {
                   value={formData.qrCode}
                   onChange={handleInputChange}
                   placeholder="Scan or paste QR code data"
-                  className="flex-1 px-4 py-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="flex-1 px-4 py-3 bg-black/20 backdrop-blur-md border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400/50 text-white placeholder-gray-400"
                 />
                 <button
                   type="button"
-                  className="px-4 py-3 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+                  className="px-4 py-3 bg-blue-500/20 backdrop-blur-md text-blue-300 rounded-lg hover:bg-blue-500/30 transition-colors border border-blue-500/30"
                 >
                   <QrCode className="h-5 w-5" />
                 </button>
@@ -324,7 +325,7 @@ const QualityTestForm: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-blue-700 mb-2">
+              <label className="block text-sm font-medium text-blue-300 mb-2">
                 Batch ID *
               </label>
               <input
@@ -334,7 +335,7 @@ const QualityTestForm: React.FC = () => {
                 onChange={handleInputChange}
                 required
                 placeholder="HERB-1234567890-1234"
-                className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 bg-black/20 backdrop-blur-md border border-blue-500/30 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400/50 text-white placeholder-gray-400"
               />
             </div>
 

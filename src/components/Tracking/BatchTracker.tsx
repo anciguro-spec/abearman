@@ -101,14 +101,14 @@ const BatchTracker: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="bg-white rounded-xl shadow-lg p-8">
+      <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-indigo-500/20">
         <div className="flex items-center space-x-3 mb-8">
-          <div className="p-3 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg">
+          <div className="p-3 bg-gradient-to-r from-indigo-500/80 to-purple-600/80 backdrop-blur-md rounded-lg border border-indigo-400/30">
             <Search className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-indigo-800">Batch Tracking</h2>
-            <p className="text-indigo-600">Track herb batches through the supply chain</p>
+            <h2 className="text-2xl font-bold text-white">Batch Tracking</h2>
+            <p className="text-indigo-300">Track herb batches through the supply chain</p>
           </div>
         </div>
 
@@ -121,13 +121,13 @@ const BatchTracker: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Enter Batch ID or Event ID (e.g., HERB-1234567890-1234)"
-                className="w-full px-4 py-3 border border-indigo-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-3 bg-black/20 backdrop-blur-md border border-indigo-500/30 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400/50 text-white placeholder-gray-400"
               />
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+              className="px-6 py-3 bg-gradient-to-r from-indigo-500/80 to-purple-600/80 backdrop-blur-md text-white rounded-lg hover:from-indigo-600/90 hover:to-purple-700/90 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 border border-indigo-400/30"
             >
               {loading ? (
                 <>
@@ -146,7 +146,7 @@ const BatchTracker: React.FC = () => {
 
         {/* Error Message */}
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+          <div className="mb-6 p-4 bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-lg text-red-300">
             {error}
           </div>
         )}

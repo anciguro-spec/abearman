@@ -77,7 +77,12 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 relative overflow-hidden">
+      {/* Glass morphism background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-emerald-500/3 to-teal-500/5" />
+      <div className="absolute top-20 right-20 w-64 h-64 bg-green-400/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-40 left-40 w-80 h-80 bg-emerald-400/5 rounded-full blur-3xl" />
+      
       <Header onMenuToggle={handleMenuToggle} isSidebarOpen={isSidebarOpen} />
       
       <div className="flex">

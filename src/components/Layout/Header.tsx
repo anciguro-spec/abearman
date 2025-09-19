@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Leaf, User, LogOut, Home, QrCode } from 'lucide-react';
+import { Menu, X, Leaf, User, LogOut, QrCode } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 
 interface HeaderProps {
@@ -17,13 +17,13 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isSidebarOpen }) => {
   };
 
   return (
-    <header className="bg-white/80 backdrop-blur-md border-b border-green-100 sticky top-0 z-50">
+    <header className="bg-black/20 backdrop-blur-xl border-b border-green-500/20 sticky top-0 z-50">
       <div className="flex items-center justify-between px-4 py-3">
         {/* Logo and Menu */}
         <div className="flex items-center space-x-4">
           <button
             onClick={onMenuToggle}
-            className="p-2 text-green-700 hover:bg-green-50 rounded-lg transition-colors lg:hidden"
+            className="p-2 text-green-400 hover:bg-green-500/10 rounded-lg transition-colors lg:hidden"
           >
             {isSidebarOpen ? (
               <X className="h-6 w-6" />
@@ -33,23 +33,19 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isSidebarOpen }) => {
           </button>
           
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg">
+            <div className="p-2 bg-gradient-to-br from-green-500/80 to-emerald-600/80 backdrop-blur-md rounded-lg border border-green-400/30">
               <Leaf className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-green-800">HerbionYX</h1>
-              <p className="text-xs text-green-600">Ayurvedic Traceability</p>
+              <h1 className="text-xl font-bold text-white">HerbionYX</h1>
+              <p className="text-xs text-green-300">Ayurvedic Traceability</p>
             </div>
           </div>
         </div>
 
         {/* Quick Actions */}
         <div className="flex items-center space-x-3">
-          <button className="p-2 text-green-700 hover:bg-green-50 rounded-lg transition-colors">
-            <Home className="h-5 w-5" />
-          </button>
-          
-          <button className="p-2 text-green-700 hover:bg-green-50 rounded-lg transition-colors">
+          <button className="p-2 text-green-400 hover:bg-green-500/10 rounded-lg transition-colors">
             <QrCode className="h-5 w-5" />
           </button>
 
@@ -57,14 +53,14 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isSidebarOpen }) => {
           <div className="relative">
             <button
               onClick={() => setIsProfileOpen(!isProfileOpen)}
-              className="flex items-center space-x-3 p-2 text-green-700 hover:bg-green-50 rounded-lg transition-colors"
+              className="flex items-center space-x-3 p-2 text-green-400 hover:bg-green-500/10 rounded-lg transition-colors"
             >
-              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-green-400/80 to-emerald-500/80 backdrop-blur-md rounded-full flex items-center justify-center border border-green-400/30">
                 <User className="h-4 w-4 text-white" />
               </div>
               <div className="text-left hidden sm:block">
-                <p className="text-sm font-medium text-gray-900">{user?.name || 'User'}</p>
-                <p className="text-xs text-gray-500 capitalize">
+                <p className="text-sm font-medium text-white">{user?.name || 'User'}</p>
+                <p className="text-xs text-green-300 capitalize">
                   {user?.role === 1 ? 'Collector' : 
                    user?.role === 2 ? 'Tester' : 
                    user?.role === 3 ? 'Processor' : 
@@ -75,15 +71,15 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isSidebarOpen }) => {
             </button>
 
             {isProfileOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-green-100 py-1 z-50">
-                <div className="px-4 py-2 border-b border-gray-100">
-                  <p className="text-sm font-medium text-gray-900">{user?.name}</p>
-                  <p className="text-xs text-gray-500">{user?.organization}</p>
+              <div className="absolute right-0 mt-2 w-48 bg-black/40 backdrop-blur-xl rounded-lg shadow-lg border border-green-500/30 py-1 z-50">
+                <div className="px-4 py-2 border-b border-green-500/20">
+                  <p className="text-sm font-medium text-white">{user?.name}</p>
+                  <p className="text-xs text-green-300">{user?.organization}</p>
                 </div>
                 
                 <button
                   onClick={handleLogout}
-                  className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                  className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 transition-colors"
                 >
                   <LogOut className="h-4 w-4" />
                   <span>Logout</span>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Cpu, Upload, AlertCircle, CheckCircle, Loader2, QrCode, MapPin, Calculator } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { PROCESSING_METHODS } from '../../config/herbs';
@@ -226,40 +227,40 @@ const ProcessingForm: React.FC = () => {
   if (success && qrResult) {
     return (
       <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-purple-500/20">
           <div className="text-center mb-6">
             <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-green-800 mb-2">Processing Completed!</h2>
-            <p className="text-green-600">Processing details have been recorded on the blockchain</p>
+            <h2 className="text-2xl font-bold text-white mb-2">Processing Completed!</h2>
+            <p className="text-green-300">Processing details have been recorded on the blockchain</p>
           </div>
 
-          <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-6 mb-6">
+          <div className="bg-purple-500/10 backdrop-blur-md rounded-lg p-6 mb-6 border border-purple-500/30">
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="font-medium text-purple-700">Batch ID:</span>
-                <p className="text-purple-900 font-mono">{qrResult.batchId}</p>
+                <span className="font-medium text-purple-300">Batch ID:</span>
+                <p className="text-white font-mono">{qrResult.batchId}</p>
               </div>
               <div>
-                <span className="font-medium text-purple-700">Process Event ID:</span>
-                <p className="text-purple-900 font-mono">{qrResult.eventId}</p>
+                <span className="font-medium text-purple-300">Process Event ID:</span>
+                <p className="text-white font-mono">{qrResult.eventId}</p>
               </div>
               <div>
-                <span className="font-medium text-purple-700">Method:</span>
-                <p className="text-purple-900">{qrResult.processing.method}</p>
+                <span className="font-medium text-purple-300">Method:</span>
+                <p className="text-white">{qrResult.processing.method}</p>
               </div>
               <div>
-                <span className="font-medium text-purple-700">Yield:</span>
-                <p className="text-purple-900">{qrResult.processing.yield}g</p>
+                <span className="font-medium text-purple-300">Yield:</span>
+                <p className="text-white">{qrResult.processing.yield}g</p>
               </div>
               {qrResult.processing.temperature && (
                 <div>
-                  <span className="font-medium text-purple-700">Temperature:</span>
-                  <p className="text-purple-900">{qrResult.processing.temperature}°C</p>
+                  <span className="font-medium text-purple-300">Temperature:</span>
+                  <p className="text-white">{qrResult.processing.temperature}°C</p>
                 </div>
               )}
               <div>
-                <span className="font-medium text-purple-700">Duration:</span>
-                <p className="text-purple-900">{qrResult.processing.duration}</p>
+                <span className="font-medium text-purple-300">Duration:</span>
+                <p className="text-white">{qrResult.processing.duration}</p>
               </div>
             </div>
           </div>
@@ -276,7 +277,7 @@ const ProcessingForm: React.FC = () => {
 
           <button
             onClick={handleReset}
-            className="w-full mt-6 bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-3 px-4 rounded-lg hover:from-purple-600 hover:to-indigo-700 transition-all duration-200 font-medium"
+            className="w-full mt-6 bg-gradient-to-r from-purple-500/80 to-indigo-600/80 backdrop-blur-md text-white py-3 px-4 rounded-lg hover:from-purple-600/90 hover:to-indigo-700/90 transition-all duration-200 font-medium border border-purple-400/30"
           >
             Process New Batch
           </button>
@@ -287,28 +288,28 @@ const ProcessingForm: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-white rounded-xl shadow-lg p-8">
+      <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-purple-500/20">
         <div className="flex items-center space-x-3 mb-8">
-          <div className="p-3 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg">
+          <div className="p-3 bg-gradient-to-r from-purple-500/80 to-indigo-600/80 backdrop-blur-md rounded-lg border border-purple-400/30">
             <Cpu className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-purple-800">Processing Unit</h2>
-            <p className="text-purple-600">Record processing operations with location and timestamps</p>
+            <h2 className="text-2xl font-bold text-white">Processing Unit</h2>
+            <p className="text-purple-300">Record processing operations with location and timestamps</p>
           </div>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-2">
-            <AlertCircle className="h-5 w-5 text-red-600" />
-            <p className="text-red-700">{error}</p>
+          <div className="mb-6 p-4 bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-lg flex items-center space-x-2">
+            <AlertCircle className="h-5 w-5 text-red-400" />
+            <p className="text-red-300">{error}</p>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-purple-700 mb-2">
+              <label className="block text-sm font-medium text-purple-300 mb-2">
                 Scan QR Code (optional - auto-fills batch and parent event)
               </label>
               <div className="flex space-x-2">
@@ -318,11 +319,11 @@ const ProcessingForm: React.FC = () => {
                   value={formData.qrCode}
                   onChange={handleInputChange}
                   placeholder="Scan or paste QR code data"
-                  className="flex-1 px-4 py-3 border border-purple-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="flex-1 px-4 py-3 bg-black/20 backdrop-blur-md border border-purple-500/30 rounded-lg focus:ring-2 focus:ring-purple-400 focus:border-purple-400/50 text-white placeholder-gray-400"
                 />
                 <button
                   type="button"
-                  className="px-4 py-3 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors"
+                  className="px-4 py-3 bg-purple-500/20 backdrop-blur-md text-purple-300 rounded-lg hover:bg-purple-500/30 transition-colors border border-purple-500/30"
                 >
                   <QrCode className="h-5 w-5" />
                 </button>

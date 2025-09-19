@@ -246,30 +246,30 @@ const CollectionForm: React.FC = () => {
   if (success && qrResult) {
     return (
       <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-green-500/20">
           <div className="text-center mb-6">
             <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-green-800 mb-2">Collection Successful!</h2>
-            <p className="text-green-600">Your herb collection has been recorded on the blockchain</p>
+            <h2 className="text-2xl font-bold text-white mb-2">Collection Successful!</h2>
+            <p className="text-green-300">Your herb collection has been recorded on the blockchain</p>
           </div>
 
-          <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 mb-6">
+          <div className="bg-green-500/10 backdrop-blur-md rounded-lg p-6 mb-6 border border-green-500/30">
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="font-medium text-green-700">Batch ID:</span>
-                <p className="text-green-900 font-mono">{qrResult.batchId}</p>
+                <span className="font-medium text-green-300">Batch ID:</span>
+                <p className="text-white font-mono">{qrResult.batchId}</p>
               </div>
               <div>
-                <span className="font-medium text-green-700">Herb Species:</span>
-                <p className="text-green-900">{qrResult.herbSpecies}</p>
+                <span className="font-medium text-green-300">Herb Species:</span>
+                <p className="text-white">{qrResult.herbSpecies}</p>
               </div>
               <div>
-                <span className="font-medium text-green-700">Weight:</span>
-                <p className="text-green-900">{qrResult.weight}g</p>
+                <span className="font-medium text-green-300">Weight:</span>
+                <p className="text-white">{qrResult.weight}g</p>
               </div>
               <div>
-                <span className="font-medium text-green-700">Location:</span>
-                <p className="text-green-900">{qrResult.location?.zone}</p>
+                <span className="font-medium text-green-300">Location:</span>
+                <p className="text-white">{qrResult.location?.zone}</p>
               </div>
             </div>
           </div>
@@ -286,7 +286,7 @@ const CollectionForm: React.FC = () => {
 
           <button
             onClick={handleReset}
-            className="w-full mt-6 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 px-4 rounded-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-200 font-medium"
+            className="w-full mt-6 bg-gradient-to-r from-green-500/80 to-emerald-600/80 backdrop-blur-md text-white py-3 px-4 rounded-lg hover:from-green-600/90 hover:to-emerald-700/90 transition-all duration-200 font-medium border border-green-400/30"
           >
             Create New Collection
           </button>
@@ -297,21 +297,21 @@ const CollectionForm: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-white rounded-xl shadow-lg p-8">
+      <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-green-500/20">
         <div className="flex items-center space-x-3 mb-8">
-          <div className="p-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg">
+          <div className="p-3 bg-gradient-to-r from-green-500/80 to-emerald-600/80 backdrop-blur-md rounded-lg border border-green-400/30">
             <Sprout className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-green-800">Collector Group</h2>
-            <p className="text-green-600">Record herb collection details with location validation</p>
+            <h2 className="text-2xl font-bold text-white">Collector Group</h2>
+            <p className="text-green-300">Record herb collection details with location validation</p>
           </div>
         </div>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex items-center">
-            <AlertCircle className="h-5 w-5 text-red-500 mr-3" />
-            <span className="text-red-700">{error}</span>
+          <div className="bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-lg p-4 mb-6 flex items-center">
+            <AlertCircle className="h-5 w-5 text-red-400 mr-3" />
+            <span className="text-red-300">{error}</span>
           </div>
         )}
 
@@ -319,7 +319,7 @@ const CollectionForm: React.FC = () => {
           {/* Basic Information */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-green-700 mb-2">
+              <label className="block text-sm font-medium text-green-300 mb-2">
                 Herb Species *
               </label>
               <select
@@ -327,12 +327,12 @@ const CollectionForm: React.FC = () => {
                 value={formData.herbSpecies}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-green-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-4 py-3 bg-black/20 backdrop-blur-md border border-green-500/30 rounded-lg focus:ring-2 focus:ring-green-400 focus:border-green-400/50 text-white"
               >
                 <option value="">Select Herb Species</option>
                 {AYURVEDIC_HERBS.map((herb) => (
-                  <option key={herb.id} value={herb.name}>
-                    {herb.name} ({herb.scientificName})
+                  <option key={herb.id} value={herb.common} className="bg-gray-800 text-white">
+                    {herb.common} ({herb.botanical})
                   </option>
                 ))}
               </select>

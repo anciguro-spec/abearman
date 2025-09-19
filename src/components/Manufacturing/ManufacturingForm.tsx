@@ -211,39 +211,39 @@ const ManufacturingForm: React.FC = () => {
   if (success && qrResult) {
     return (
       <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-orange-500/20">
           <div className="text-center mb-6">
             <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-green-800 mb-2">Manufacturing Completed!</h2>
-            <p className="text-green-600">Product manufacturing has been recorded on the blockchain</p>
+            <h2 className="text-2xl font-bold text-white mb-2">Manufacturing Completed!</h2>
+            <p className="text-green-300">Product manufacturing has been recorded on the blockchain</p>
           </div>
 
-          <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg p-6 mb-6">
+          <div className="bg-orange-500/10 backdrop-blur-md rounded-lg p-6 mb-6 border border-orange-500/30">
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="font-medium text-orange-700">Original Batch ID:</span>
-                <p className="text-orange-900 font-mono">{qrResult.batchId}</p>
+                <span className="font-medium text-orange-300">Original Batch ID:</span>
+                <p className="text-white font-mono">{qrResult.batchId}</p>
               </div>
               <div>
-                <span className="font-medium text-orange-700">Manufacturing Event ID:</span>
-                <p className="text-orange-900 font-mono">{qrResult.eventId}</p>
+                <span className="font-medium text-orange-300">Manufacturing Event ID:</span>
+                <p className="text-white font-mono">{qrResult.eventId}</p>
               </div>
               <div>
-                <span className="font-medium text-orange-700">Product Name:</span>
-                <p className="text-orange-900">{qrResult.product.name}</p>
+                <span className="font-medium text-orange-300">Product Name:</span>
+                <p className="text-white">{qrResult.product.name}</p>
               </div>
               <div>
-                <span className="font-medium text-orange-700">Product Type:</span>
-                <p className="text-orange-900">{qrResult.product.type}</p>
+                <span className="font-medium text-orange-300">Product Type:</span>
+                <p className="text-white">{qrResult.product.type}</p>
               </div>
               <div>
-                <span className="font-medium text-orange-700">Quantity:</span>
-                <p className="text-orange-900">{qrResult.product.quantity} {qrResult.product.unit}</p>
+                <span className="font-medium text-orange-300">Quantity:</span>
+                <p className="text-white">{qrResult.product.quantity} {qrResult.product.unit}</p>
               </div>
               {qrResult.product.expiryDate && (
                 <div>
-                  <span className="font-medium text-orange-700">Expiry Date:</span>
-                  <p className="text-orange-900">{qrResult.product.expiryDate}</p>
+                  <span className="font-medium text-orange-300">Expiry Date:</span>
+                  <p className="text-white">{qrResult.product.expiryDate}</p>
                 </div>
               )}
             </div>
@@ -261,7 +261,7 @@ const ManufacturingForm: React.FC = () => {
 
           <button
             onClick={handleReset}
-            className="w-full mt-6 bg-gradient-to-r from-orange-500 to-red-600 text-white py-3 px-4 rounded-lg hover:from-orange-600 hover:to-red-700 transition-all duration-200 font-medium"
+            className="w-full mt-6 bg-gradient-to-r from-orange-500/80 to-red-600/80 backdrop-blur-md text-white py-3 px-4 rounded-lg hover:from-orange-600/90 hover:to-red-700/90 transition-all duration-200 font-medium border border-orange-400/30"
           >
             Manufacture New Product
           </button>
@@ -272,21 +272,21 @@ const ManufacturingForm: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-white rounded-xl shadow-lg p-8">
+      <div className="bg-black/20 backdrop-blur-xl rounded-xl shadow-2xl p-8 border border-orange-500/20">
         <div className="flex items-center space-x-3 mb-8">
-          <div className="p-3 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg">
+          <div className="p-3 bg-gradient-to-r from-orange-500/80 to-red-600/80 backdrop-blur-md rounded-lg border border-orange-400/30">
             <Package className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-orange-800">Manufacturing Plant</h2>
-            <p className="text-orange-600">Record final product manufacturing with certifications</p>
+            <h2 className="text-2xl font-bold text-white">Manufacturing Plant</h2>
+            <p className="text-orange-300">Record final product manufacturing with certifications</p>
           </div>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-2">
-            <AlertCircle className="h-5 w-5 text-red-600" />
-            <p className="text-red-700">{error}</p>
+          <div className="mb-6 p-4 bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-lg flex items-center space-x-2">
+            <AlertCircle className="h-5 w-5 text-red-400" />
+            <p className="text-red-300">{error}</p>
           </div>
         )}
 

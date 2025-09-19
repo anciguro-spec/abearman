@@ -70,7 +70,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeTab, onTabChange }) => 
       transform transition-transform duration-300 ease-in-out
       ${isOpen ? 'translate-x-0' : '-translate-x-full'}
       lg:translate-x-0 lg:static lg:h-[calc(100vh-73px)]
-      bg-white/90 backdrop-blur-md border-r border-green-100
+      bg-black/20 backdrop-blur-xl border-r border-green-500/20
     `}>
       <nav className="h-full px-3 py-4 overflow-y-auto">
         <ul className="space-y-2">
@@ -84,8 +84,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeTab, onTabChange }) => 
                     flex items-center space-x-3 w-full px-4 py-3 rounded-lg
                     text-sm font-medium transition-all duration-200
                     ${activeTab === item.id 
-                      ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg' 
-                      : 'text-green-700 hover:bg-green-50 hover:text-green-800'
+                      ? getActiveButtonStyle(user?.role) 
+                      : 'text-green-300 hover:bg-green-500/10 hover:text-white'
                     }
                   `}
                 >
@@ -98,17 +98,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeTab, onTabChange }) => 
         </ul>
 
         {/* Role Indicator */}
-        <div className="mt-8 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
+        <div className={`mt-8 p-4 backdrop-blur-xl rounded-lg border ${getRoleIndicatorStyle(user?.role)}`}>
           <div className="text-center">
-            <p className="text-xs text-green-600 font-medium mb-1">Your Role</p>
-            <p className="text-sm font-bold text-green-800 capitalize">
+            <p className="text-xs text-green-300 font-medium mb-1">Your Role</p>
+            <p className="text-sm font-bold text-white capitalize">
               {user?.role === 1 ? 'Collector' : 
                user?.role === 2 ? 'Tester' : 
                user?.role === 3 ? 'Processor' : 
                user?.role === 4 ? 'Manufacturer' : 
                'Consumer'}
             </p>
-            <p className="text-xs text-green-600 mt-1">{user?.organization}</p>
+            <p className="text-xs text-green-300 mt-1">{user?.organization}</p>
           </div>
         </div>
       </nav>
@@ -116,4 +116,23 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeTab, onTabChange }) => 
   );
 };
 
+const getActiveButtonStyle = (role?: number) => {
+  switch (role) {
+    case 1: return 'bg-gradient-to-r from-green-500/80 to-emerald-600/80 text-white shadow-lg backdrop-blur-md border border-green-400/30';
+    case 2: return 'bg-gradient-to-r from-blue-500/80 to-indigo-600/80 text-white shadow-lg backdrop-blur-md border border-blue-400/30';
+    case 3: return 'bg-gradient-to-r from-purple-500/80 to-indigo-600/80 text-white shadow-lg backdrop-blur-md border border-purple-400/30';
+    case 4: return 'bg-gradient-to-r from-orange-500/80 to-red-600/80 text-white shadow-lg backdrop-blur-md border border-orange-400/30';
+    default: return 'bg-gradient-to-r from-emerald-500/80 to-teal-600/80 text-white shadow-lg backdrop-blur-md border border-emerald-400/30';
+  }
+};
+
+const getRoleIndicatorStyle = (role?: number) => {
+  switch (role) {
+    case 1: return 'bg-green-500/10 border-green-500/30';
+    case 2: return 'bg-blue-500/10 border-blue-500/30';
+    case 3: return 'bg-purple-500/10 border-purple-500/30';
+    case 4: return 'bg-orange-500/10 border-orange-500/30';
+    default: return 'bg-emerald-500/10 border-emerald-500/30';
+  }
+};
 export default Sidebar;

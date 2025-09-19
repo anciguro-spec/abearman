@@ -50,15 +50,15 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({ qrData, title, subtitle }
   };
 
   return (
-    <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-8 border border-green-200">
+    <div className="bg-black/10 backdrop-blur-xl rounded-xl p-8 border border-green-500/30">
       <div className="text-center mb-6">
-        <h3 className="text-xl font-bold text-green-800 mb-2">{title}</h3>
-        <p className="text-green-600">{subtitle}</p>
+        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+        <p className="text-green-300">{subtitle}</p>
       </div>
 
       {/* QR Code */}
       <div className="flex justify-center mb-6">
-        <div className="bg-white p-4 rounded-xl shadow-lg border border-green-100">
+        <div className="bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-green-400/30">
           <img 
             src={qrData.dataURL} 
             alt={title}
@@ -68,7 +68,7 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({ qrData, title, subtitle }
       </div>
 
       {/* Tracking URL */}
-      <div className="bg-white rounded-lg p-4 mb-6 border border-green-100">
+      <div className="bg-black/20 backdrop-blur-md rounded-lg p-4 mb-6 border border-green-500/30">
         <label className="block text-sm font-medium text-green-700 mb-2">
           Tracking URL
         </label>
@@ -77,18 +77,18 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({ qrData, title, subtitle }
             type="text"
             value={qrData.trackingUrl}
             readOnly
-            className="flex-1 px-3 py-2 text-sm bg-gray-50 border border-gray-200 rounded-lg font-mono"
+            className="flex-1 px-3 py-2 text-sm bg-black/20 backdrop-blur-md border border-green-500/30 rounded-lg font-mono text-white"
           />
           <button
             onClick={handleCopyUrl}
-            className="px-3 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+            className="px-3 py-2 bg-green-500/80 backdrop-blur-md text-white rounded-lg hover:bg-green-600/90 transition-colors border border-green-400/30"
             title="Copy URL"
           >
             {copied ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
           </button>
         </div>
         {copied && (
-          <p className="text-xs text-green-600 mt-1">URL copied to clipboard!</p>
+          <p className="text-xs text-green-300 mt-1">URL copied to clipboard!</p>
         )}
       </div>
 
@@ -96,7 +96,7 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({ qrData, title, subtitle }
       <div className="grid grid-cols-2 gap-4">
         <button
           onClick={handleDownload}
-          className="flex items-center justify-center space-x-2 px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+          className="flex items-center justify-center space-x-2 px-4 py-3 bg-blue-500/80 backdrop-blur-md text-white rounded-lg hover:bg-blue-600/90 transition-colors border border-blue-400/30"
         >
           <Download className="h-4 w-4" />
           <span>Download QR</span>
@@ -104,7 +104,7 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({ qrData, title, subtitle }
 
         <button
           onClick={handleShare}
-          className="flex items-center justify-center space-x-2 px-4 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
+          className="flex items-center justify-center space-x-2 px-4 py-3 bg-purple-500/80 backdrop-blur-md text-white rounded-lg hover:bg-purple-600/90 transition-colors border border-purple-400/30"
         >
           <Share2 className="h-4 w-4" />
           <span>Share Link</span>
